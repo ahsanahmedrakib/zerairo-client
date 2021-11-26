@@ -1,0 +1,11 @@
+#product{
+    transition: .6s;
+}
+#product:hover{
+    box-shadow:  8px 10px 20px 10px gray;
+    border-radius: 5px;
+    color: #1C99E6;
+}
+#product h2{
+    font-weight: bold;
+}

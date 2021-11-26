@@ -1,0 +1,8 @@
+.my-navlink li{
+    margin-top: 8px;
+}
+.my-navlink li a{
+    font-family: "Raleway";
+    font-size: 18px;
+    font-weight: bold;
+}
