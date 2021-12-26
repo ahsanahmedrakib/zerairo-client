@@ -6,21 +6,43 @@ import "./Explore.css";
 
 const Explore = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const [displayProduct, setDisplayProduct] = useState([]);
   useEffect(() => {
     fetch("https://guarded-cliffs-66060.herokuapp.com/products")
       .then((res) => res.json())
-      .then((data) => setAllProducts(data));
-  }, [allProducts]);
+      .then((data) => {
+        setAllProducts(data);
+        setDisplayProduct(data)
+      });
+  }, []);
+
+  const handleSearch = (e) => {
+    const searchText = e.target.value;
+    const matchedProducts = allProducts.filter((product) =>
+      product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setDisplayProduct(matchedProducts);
+    console.log(matchedProducts.length);
+  };
+
   return (
     <div>
       <Header />
       <div className="container my-5">
-      <h2 style={{fontWeight:'bold'}}>
-        Find Your Favourite <span className="text-primary">Watch</span>
-      </h2>
-      <p className="text-secondary mb-4">
-        Choose your favourite watch from us.
-      </p>
+        <h2 style={{ fontWeight: "bold" }}>
+          Find Your Favourite <span className="text-primary">Watch</span>
+        </h2>
+        <p className="text-secondary mb-4">
+          Choose your favourite watch from us.
+        </p>
+        <div className="col-lg-8 col-md-6 col-sm-8 m-auto my-4">
+          <input
+            className="form-control"
+            onChange={handleSearch}
+            type="text"
+            placeholder="Search products"
+          />
+        </div>
         {allProducts.length === 0 ? (
           <div className="d-flex justify-content-center">
             {" "}
@@ -30,7 +52,8 @@ const Explore = () => {
           </div>
         ) : (
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {allProducts.map((product) => (
+          {displayProduct.length === 0 && <h3 className="text-danger">No products found!</h3>}
+            {displayProduct.map((product) => (
               <div key={product._id} className="col">
                 <div className="card h-100 border-0" id="product">
                   <img src={product.image} className="card-img-top" alt="..." />
