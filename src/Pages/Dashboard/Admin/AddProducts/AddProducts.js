@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const AddProducts = () => {
   const imageRef = useRef();
@@ -17,7 +17,7 @@ const AddProducts = () => {
 
     const newProducts = { image, name, description, price };
 
-    fetch("https://guarded-cliffs-66060.herokuapp.com/products", {
+    fetch("https://zerairo-server.onrender.com/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -38,19 +38,19 @@ const AddProducts = () => {
         onSubmit={handleAddProducts}
       >
         <h2 className="mb-3">Add a product</h2>
-        {success && ( 
-           <div
-           class="alert alert-success alert-dismissible fade show"
-           role="alert"
-         >
-           Add product sucessfully
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="alert"
-             aria-label="Close"
-           ></button>
-         </div>
+        {success && (
+          <div
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            Add product sucessfully
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
         )}
         <input
           className="form-control mb-3"

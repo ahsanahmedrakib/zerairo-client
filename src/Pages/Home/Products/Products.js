@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Products.css";
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
+
   useEffect(() => {
-    fetch("https://guarded-cliffs-66060.herokuapp.com/products")
+    fetch("https://zerairo-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setAllProducts(data));
-  }, [allProducts]);
+  }, []);
+
   return (
     <div className="container my-5">
-      <h2 style={{fontWeight:'bold'}}>
+      <h2 style={{ fontWeight: "bold" }}>
         Find Your Favourite <span className="text-primary">Watch</span>
       </h2>
       <p className="text-secondary mb-4">

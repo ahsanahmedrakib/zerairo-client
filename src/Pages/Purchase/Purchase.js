@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import Footer from "../Shared/Footer/Footer";
@@ -19,7 +19,7 @@ const Purchase = () => {
 
   //load a single product by id
   useEffect(() => {
-    const url = `https://guarded-cliffs-66060.herokuapp.com/purchase/${id}`;
+    const url = `https://zerairo-server.onrender.com/purchase/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -46,7 +46,7 @@ const Purchase = () => {
       date,
       status: "Pending",
     };
-    fetch("https://guarded-cliffs-66060.herokuapp.com/purchase", {
+    fetch("https://zerairo-server.onrender.com/purchase", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -86,19 +86,19 @@ const Purchase = () => {
             <div className="p-3">
               <form onSubmit={handlePlaceOrder}>
                 <h2 className="mb-3">Please, provide your information</h2>
-                {message && ( 
+                {message && (
                   <div
-                  class="alert alert-success alert-dismissible fade show"
-                  role="alert"
-                >
-                  Place order successfully
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  ></button>
-                </div>
+                    class="alert alert-success alert-dismissible fade show"
+                    role="alert"
+                  >
+                    Place order successfully
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="alert"
+                      aria-label="Close"
+                    ></button>
+                  </div>
                 )}
                 <input
                   className="form-control mb-3"

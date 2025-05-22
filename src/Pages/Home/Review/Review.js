@@ -1,6 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Rating from "react-rating";
 import "./Review.css";
 
@@ -8,14 +6,16 @@ const Review = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://guarded-cliffs-66060.herokuapp.com/reviews")
+    fetch("https://zerairo-server.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, [reviews]);
+  }, []);
 
   return (
     <div className="container my-5">
-      <h2 className="mb-4 fw-bold">Users <span className="text-primary">Review</span></h2>
+      <h2 className="mb-4 fw-bold">
+        Users <span className="text-primary">Review</span>
+      </h2>
       <div className="row row-cols-1 row-cols-md-5 g-4">
         {reviews.map((review) => (
           <div key={review._id} className="col">

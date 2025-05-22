@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
-  signOut,
+  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
+import { useEffect, useState } from "react";
+import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
 
 initializeFirebase();
 const useFirebase = () => {
@@ -54,7 +54,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
-    fetch("https://guarded-cliffs-66060.herokuapp.com/users", {
+    fetch("https://zerairo-server.onrender.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -77,7 +77,7 @@ const useFirebase = () => {
 
   // check if a user admin or not
   useEffect(() => {
-    fetch(`https://guarded-cliffs-66060.herokuapp.com/users/${user.email}`)
+    fetch(`https://zerairo-server.onrender.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

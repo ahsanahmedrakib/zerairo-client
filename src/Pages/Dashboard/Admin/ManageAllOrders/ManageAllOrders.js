@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [mesage, setMessage] = useState(false);
   const [deleted, setDeleted] = useState(false);
   useEffect(() => {
-    const url = "https://guarded-cliffs-66060.herokuapp.com/orders";
+    const url = "https://zerairo-server.onrender.com/orders";
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
 
   const handleUpdateStatus = (id) => {
-    const url = `https://guarded-cliffs-66060.herokuapp.com/orders/${id}`;
+    const url = `https://zerairo-server.onrender.com/orders/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -31,7 +31,7 @@ const ManageAllOrders = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm("Are you sure want to delete");
     if (proceed) {
-      const url = `https://guarded-cliffs-66060.herokuapp.com/orders/${id}`;
+      const url = `https://zerairo-server.onrender.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })

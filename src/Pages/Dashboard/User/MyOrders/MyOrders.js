@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 
 const MyOrders = () => {
@@ -7,7 +7,7 @@ const MyOrders = () => {
   const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
-    const url = `https://guarded-cliffs-66060.herokuapp.com/myorders?email=${user.email}`;
+    const url = `https://zerairo-server.onrender.com/myorders?email=${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));
@@ -16,7 +16,7 @@ const MyOrders = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm("Are you sure want to delete");
     if (proceed) {
-      const url = `https://guarded-cliffs-66060.herokuapp.com/orders/${id}`;
+      const url = `https://zerairo-server.onrender.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })

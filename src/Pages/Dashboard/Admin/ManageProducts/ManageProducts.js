@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ManageProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [deleted, setDeleted] = useState(false);
   useEffect(() => {
-    fetch("https://guarded-cliffs-66060.herokuapp.com/products")
+    fetch("https://zerairo-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setAllProducts(data));
   }, [allProducts]);
@@ -12,7 +12,7 @@ const ManageProducts = () => {
   const handleDeleteProduct = (id) => {
     const proceed = window.confirm("Are you sure want to delete");
     if (proceed) {
-      const url = `https://guarded-cliffs-66060.herokuapp.com/products/${id}`;
+      const url = `https://zerairo-server.onrender.com/products/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -32,11 +32,11 @@ const ManageProducts = () => {
     <div className="container">
       <h2 className="my-3">Manage Products</h2>
       {deleted && (
-          <div
+        <div
           class="alert alert-success alert-dismissible fade show"
           role="alert"
         >
-        Delete order successfully
+          Delete order successfully
           <button
             type="button"
             class="btn-close"

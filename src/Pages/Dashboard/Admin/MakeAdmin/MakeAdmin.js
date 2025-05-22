@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ const MakeAdmin = () => {
   const handleMakeAdmin = (e) => {
     e.preventDefault();
     const user = { email };
-    fetch("https://guarded-cliffs-66060.herokuapp.com/users/admin", {
+    fetch("https://zerairo-server.onrender.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
@@ -8,11 +8,11 @@ const Explore = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [displayProduct, setDisplayProduct] = useState([]);
   useEffect(() => {
-    fetch("https://guarded-cliffs-66060.herokuapp.com/products")
+    fetch("https://zerairo-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
-        setDisplayProduct(data)
+        setDisplayProduct(data);
       });
   }, []);
 
@@ -52,7 +52,9 @@ const Explore = () => {
           </div>
         ) : (
           <div className="row row-cols-1 row-cols-md-3 g-4">
-          {displayProduct.length === 0 && <h3 className="text-danger">No products found!</h3>}
+            {displayProduct.length === 0 && (
+              <h3 className="text-danger">No products found!</h3>
+            )}
             {displayProduct.map((product) => (
               <div key={product._id} className="col">
                 <div className="card h-100 border-0" id="product">

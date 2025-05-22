@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 
 const Review = () => {
@@ -21,7 +19,7 @@ const Review = () => {
       image,
       rating,
     };
-    fetch("https://guarded-cliffs-66060.herokuapp.com/reviews", {
+    fetch("https://zerairo-server.onrender.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -44,17 +42,17 @@ const Review = () => {
       <form className="col-lg-6 col-md-6 m-auto" onSubmit={handleSubmitReview}>
         {success && (
           <div
-          class="alert alert-success alert-dismissible fade show"
-          role="alert"
-        >
-          Add review sucessfully
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-        </div>
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            Add review sucessfully
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
         )}
         <input
           className="form-control mb-3"
